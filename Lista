@@ -1,0 +1,86 @@
+package listassimples;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class ListasSimples {
+    Nodo primero;
+    int cont=0;
+    Nodo ultimo;
+    Scanner teclado = new Scanner(System.in);
+    
+public ListasSimples(){
+        primero = null;
+        ultimo = null;
+    }
+public void insertar(){
+        Nodo nuevo = new Nodo();
+        //System.out.print(" Ingrese el dato que contendra el nodo: ");
+        while (true)
+            
+        nuevo.dato = (int)(Math.random()* 200);
+        
+       if(primero == null){
+           
+           primero = nuevo;
+           primero.siguiente = null;
+           ultimo = nuevo;
+           cont++;
+       }else{
+           ultimo.siguiente = nuevo;
+           nuevo.siguiente = null;
+           ultimo = nuevo;
+           cont++;
+       }
+       System.out.println("\n Nodo ingresado con exito en la posicion: "+cont+"\n");
+    }
+public void mostrar(){
+        Nodo actual = new Nodo();
+        actual = primero;
+        cont=1;
+        if(primero != null){
+           while(actual != null){
+               System.out.println("║ "+cont+" ║"+"«« TIENE EL DATO »»"+"["+actual.dato+"]");
+               actual = actual.siguiente;
+               cont++;
+           } 
+        }else{
+            System.out.println("\n La lista se encuentra vacia\n");
+        }
+    }
+public static void main(String[] args) {
+ListasSimples obj = new ListasSimples();
+Scanner teclado = new Scanner(System.in);
+int opcionMenu = 0;
+    do{
+System.out.println("\n |-------------------------------------|");
+System.out.println(" |              �LISTAS�               |");
+System.out.println(" |------------------|------------------|");
+System.out.println(" | 1. Insertar      | 3. Eliminar      |");
+System.out.println(" | 2. Mostrar       | 4. salir         |");
+System.out.println(" |------------------|------------------|");
+System.out.print(" Escoja una Opcion: ");
+   opcionMenu = teclado.nextInt();
+       switch(opcionMenu){
+    case 1:
+        System.out.println("\n\n INSERTA NODO EN LA LISTA \n");
+        obj.insertar();
+        break;
+    case 2:
+        System.out.println("\n\n MOSTRAR LISTA \n");
+        obj.mostrar();
+        break;
+    case 3:
+        
+        break;
+    case 4:
+        System.out.println("\n\n PROGRAMA FINALIZADO... \n");
+        break;
+    default:
+        System.out.println("\n\n OPCION NO VALIDA \n");
+        System.exit(0);
+        break;
+                }
+            }
+            while (opcionMenu != 4);
+    }  
+}
